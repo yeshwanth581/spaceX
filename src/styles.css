@@ -31,7 +31,7 @@ body {
   font-size: larger;
   letter-spacing: 0.1vw;
   border: 1px solid white;
-  width: fit-content;
+  width: min-content;
   margin-top: 10px;
   margin-bottom: 20px;
 }
