@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./styles.css";
+import LandingPage from "./LandingPage";
+import DragonInfo from "./DragonInfo";
+import ImageContainer from "./ImageContainer";
 
-function App() {
+export default function App() {
+const [dragonSelected, setDragonSelected] = useState(null);
+const changeDragonSelected = dragon => setDragonSelected(dragon);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LandingPage changeDragonSelected={changeDragonSelected}/>
+      {dragonSelected ? <DragonInfo dragon={dragonSelected}/> : null}
+      {dragonSelected ? <ImageContainer images={dragonSelected.flickr_images}/>  : null}
     </div>
   );
 }
-
-export default App;
