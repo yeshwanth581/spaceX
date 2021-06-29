@@ -177,7 +177,7 @@ body {
 /**
 * All media queries for screen size adjustements, with class/id names
 */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 800px) {
   .dragons-container {
     max-width: 50vw;
   }
