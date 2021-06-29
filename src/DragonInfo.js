@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-const specifications = ['OVERVIEW', 'HEAT SHEILD', 'TRUNK', 'THRUSTERS'];
+const specifications = ['OVERVIEW', 'HEAT SHEILD', 'TRUNK', 'THRUSTERS']; // categories
 
 export default function DragonInfo({dragon}) {
     const [activeSpec, setActiveSpec] = useState('OVERVIEW');
     const [specInfo, setSpecInfo] = useState(null);
 
     useEffect(() => {
+        /**
+         * constructs the object by specification categories based on dragon selected
+         */
         const contructSpecPayload = () => {
             if(dragon){
             let dragonSpecInfo = {
@@ -47,12 +50,18 @@ export default function DragonInfo({dragon}) {
         contructSpecPayload();
     }, [dragon])
 
+    /**
+     *  renders specification category tabs with active/in-active class status
+     */
     const renderSpecList = () => {
         return specifications.map(i => {
             return <div data-testid={i} onClick={() => setActiveSpec(i)} className={(i===activeSpec) ? 'spec-name active' : 'spec-name'}>{i}</div>
         })
     }
 
+    /**
+     * renders table info dynamically based on specification type selected from constructed spec info
+     */
     const renderSpecTable = () => {
         return Object.keys(specInfo[activeSpec]).map(i => {
             return (

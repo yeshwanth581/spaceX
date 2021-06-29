@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// axios GET dragons call config
 const config = {
     method: 'get',
     url: 'https://api.spacexdata.com/v4/dragons',
@@ -13,6 +14,7 @@ export default function LandingPage({changeDragonSelected}) {
 
     const [isLoading, setIsLoading] = useState(true);
     
+    //API call on init of the component
     useEffect(() => {
         async function fetchMyAPI() {
             try {

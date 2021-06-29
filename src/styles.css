@@ -4,12 +4,38 @@ html {
 
 body {
   background-color: #020202;
-  font-family: "Roboto", Source Sans Pro, "Segoe UI", Tahoma, Geneva, Verdana,
-    sans-serif;
+  font-family: "Roboto", Source Sans Pro, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   color: white;
 }
 
+/*
+*Common CSS
+*/
+
+.button {
+  font-size: 18px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  margin: 5px 5px;
+  cursor: pointer;
+  box-shadow: 3px 6px 18px -3px rgba(0, 0, 0, 0.68);
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: white;
+  color: #020202;
+}
+
+/**
+* Landing Page CSS
+*/
 .landing {
   background-image: url("https://www.spacex.com/static/images/dragon/desktop/DragonTrunk_Render_Desktop.jpg");
   background-repeat: no-repeat;
@@ -36,24 +62,8 @@ body {
   margin-bottom: 20px;
 }
 
-.button {
-  font-size: 18px;
-  padding: 15px 20px;
-  border-radius: 5px;
-  background-color: transparent;
-  color: white;
-  font-weight: bold;
-  border: 2px solid white;
-  margin: 5px 5px;
-  cursor: pointer;
-  box-shadow: 3px 6px 18px -3px rgba(0, 0, 0, 0.68);
-  font-family: inherit;
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: white;
-  color: #020202;
+.heading > .name {
+  width: max-content;
 }
 
 .dragons-container {
@@ -91,6 +101,9 @@ body {
   padding: 3vh 10vw;
 }
 
+/**
+* Dragon table info page CSS
+*/
 .dragon-info {
   background-image: url("https://www.spacex.com/static/images/dragon/desktop/DragonTrunk_Lines_Desktop.jpg");
   background-repeat: no-repeat;
@@ -153,11 +166,17 @@ body {
   color: white;
 }
 
+/**
+* Image page CSS
+*/
 .images {
   padding: 10px;
   width: 90vw;
 }
 
+/**
+* All media queries for screen size adjustements, with class/id names
+*/
 @media screen and (min-width: 750px) {
   .dragons-container {
     max-width: 50vw;

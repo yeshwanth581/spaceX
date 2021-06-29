@@ -9,6 +9,7 @@ import LandingPage from '../LandingPage'
 import DragonInfo from '../DragonInfo'
 import ImageContainer from '../ImageContainer'
 
+//mock server setup with mock data
 const server = setupServer(
     rest.get('https://api.spacexdata.com/v4/dragons', (req, res, ctx) => {
         return res(
@@ -20,6 +21,7 @@ const server = setupServer(
     })
 )
 
+//Testing individual Components
 describe('Should test Landing Component', () => {
     beforeAll(() => {
         server.listen();
@@ -64,6 +66,7 @@ describe('Should test DragonInfo Component', () => {
     beforeAll(() => {
         render(<DragonInfo dragon={dragonData} />)
     });
+
     test('loads and displays dragon info and tables', () => {
         const dragonName = screen.getByTestId('dragon-name');
         expect(dragonName).toBeInTheDocument();
@@ -81,6 +84,7 @@ describe('Should test Images Component', () => {
     beforeAll(() => {
         render(<ImageContainer images={images} />)
     });
+
     test('loads and displays images in the screen', () => {
         const imagesHeading = screen.getByTestId('image-heading');
         expect(imagesHeading).toBeInTheDocument();
@@ -90,11 +94,13 @@ describe('Should test Images Component', () => {
     })
 })
 
+//Testing whole app
 describe('Should test the whole app', () => {
     beforeAll(() => server.listen())
     afterEach(() => server.resetHandlers())
     afterAll(() => server.close())
 
+    // before API call data rendering
     test('loads and displays list of dragons', () => {
         render(<App />)
         const appNameElement = screen.getByTestId('app-name');
@@ -109,16 +115,17 @@ describe('Should test the whole app', () => {
         expect(screen.getByText('Loading...')).toBeInTheDocument();
     })
 
+    //After API call data rendering
     test('loads and displays greeting', async () => {
         render(<App />)
 
         await waitFor(() => screen.getByTestId('Dragon 1'))
-
         expect(screen.getByTestId('Dragon 1')).toBeInTheDocument()
 
         const item = screen.getByTestId('Dragon 1');
         fireEvent.click(item);
 
+        // SELECTED DRAGON INFO
         expect(screen.getByTestId('dragon-info')).toBeInTheDocument();
 
         //OVERVIEW
@@ -145,6 +152,7 @@ describe('Should test the whole app', () => {
         rowKeyText = screen.getByTestId('TYPE - 1');
         expect(rowKeyText).toBeInTheDocument();
 
+        // IMAGES VIEW
         const imagesHeading = screen.getByTestId('image-heading');
         expect(imagesHeading).toBeInTheDocument();
 

@@ -1,3 +1,4 @@
+// Common Image component to render images
 export default function ImageContainer({images}) {
     return (
         <>
